@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management System - New Employee</title>
+    <!-- Shared typography and styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+    <div class="container form-container">
+        <h1>Add New Employee</h1>
+
+        <!-- Form bound to the empty 'employee' object passed from controller. Maps to POST /saveEmployee -->
+        <form action="#" th:action="@{/saveEmployee}" th:object="${employee}" method="POST">
+
+            <div class="form-group">
+                <!-- Using th:field correctly binds the input name, ID, and value to object properties -->
+                <input type="text" th:field="*{firstName}" placeholder="First Name" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <input type="text" th:field="*{lastName}" placeholder="Last Name" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <input type="email" th:field="*{email}" placeholder="Email Address" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <input type="text" th:field="*{department}" placeholder="Department (e.g. Finance, IT)"
+                    class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <input type="text" th:field="*{designation}" placeholder="Designation (e.g. Manager)"
+                    class="form-control" required>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Save Employee</button>
+                <a class="btn btn-light" th:href="@{/}">Cancel & Back</a>
+            </div>
+
+        </form>
+    </div>
+
+</body>
+
+</html>
